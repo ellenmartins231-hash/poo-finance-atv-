@@ -1,5 +1,6 @@
 from financeiro.categoria import Categoria 
 from financeiro.lancamento import Lancamento 
+from datetime import date
 
 class TestLancamento: 
 
