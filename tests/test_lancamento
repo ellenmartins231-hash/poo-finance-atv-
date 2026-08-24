@@ -1,0 +1,15 @@
+from financeiro.categoria import Categoria 
+from financeiro.lancamento import Lancamento 
+
+class TestLancamento: 
+
+    def test_criar_lancamento_com_atributos(self) -> None: 
+        categoria = Categoria("Eletronicos")
+        data = date(2026, 8, 19)
+
+        lancamento = Lancamento("Compra de teclado", 240.0, data, categoria)
+
+        assert lancamento.descricao == "Compra de teclado" 
+        assert lancamento.valor == 240.0 
+        assert lancamento.data == data 
+        assert lancamento.categoria is categoria 
