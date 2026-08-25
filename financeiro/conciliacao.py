@@ -1,8 +1,11 @@
-class Conciliacao: 
-    def __init__(self, total_debitos: float, total_creditos: float,) -> None: 
-        self.total_debitos = total_debitos 
-        self.total_creditos = total_creditos
+from financeiro.fechamento import Fechamento
 
-    def esta_conciliado(self) -> bool: 
-            return self.total_debitos == self.total_creditos  
+
+class Conciliacao:
+
+    def __init__(self, fechamento: Fechamento) -> None:
+        self.fechamento = fechamento
+
+    def esta_conciliado(self) -> bool:
+        return self.fechamento.saldo() == 0
         

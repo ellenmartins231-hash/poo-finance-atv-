@@ -1,4 +1,7 @@
 class Categoria:
 
     def __init__(self, nome: str) -> None:
-        self.nome = nome 
+        if not nome.strip():
+            raise ValueError("O nome da categoria é obrigatório")
+
+        self.nome = nome
