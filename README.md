@@ -1,12 +1,13 @@
 # poo-finance-atv-
 
+
 Sistema financeiro desenvolvido para a disciplina de **Programação Orientada a Objetos II (POO II)**.
 
-O projeto tem como objetivo aplicar, na prática, conceitos de Programação Orientada a Objetos por meio da construção de um pequeno domínio financeiro, utilizando classes, objetos, relacionamentos, regras de negócio e testes automatizados.
+O projeto tem como objetivo aplicar, na prática, conceitos de Programação Orientada a Objetos aprendidos em sala de aula por meio da construção de um pequeno domínio financeiro, utilizando classes, objetos, relacionamentos, regras de negócio e testes automatizados.
 
 ---
 
-##  Objetivo do trabalho 
+# 🎯 Objetivo do projeto
 
 O **POO Financeiro** foi desenvolvido para representar operações básicas de um sistema financeiro.
 
@@ -22,13 +23,13 @@ O projeto permite:
 - Gerar um extrato a partir de diferentes fechamentos;
 - Testar automaticamente os comportamentos do sistema.
 
-O foco desse meu projeto não é criar uma aplicação financeira completa e complexa, mas sim utilizar um domínio simples para demonstrar os conceitos estudados em POO até o momento.
+O foco do trabalho não é criar uma aplicação financeira completa, mas sim utilizar um domínio sem complexidade, um dominio simples para demonstrar os conceitos estudados em Programação Orientada a Objetos.
 
 ---
 
-# Domínio do sistema
+# 🧩 Domínio do sistema
 
-O domínio financeiro é composto pelas seguintes classes:
+O domínio financeiro é composto pelas classes:
 
 - `Conta`
 - `Categoria`
@@ -39,13 +40,12 @@ O domínio financeiro é composto pelas seguintes classes:
 
 Cada classe possui uma responsabilidade específica dentro do sistema.
 
-### Visão geral do projeto 
-
+### Visão geral
 
 Conta
  │
  └── Representa uma conta financeira
-       
+
 Categoria
  │
  └── Classifica lançamentos
@@ -53,13 +53,13 @@ Categoria
 Lancamento
  │
  └── Representa uma movimentação financeira
-       
+
 Fechamento
  │
  └── Consolida lançamentos de um período
        │
        └── Calcula créditos, débitos e saldo
-       
+
 Conciliacao
  │
  └── Verifica se um fechamento está conciliado
