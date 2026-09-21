@@ -1,72 +1,54 @@
 # poo-finance-atv-
 
+Projeto desenvolvido para a disciplina de Programação Orientada a Objetos II, com o objetivo de aplicar conceitos de POO em um pequeno sistema financeiro ensinado em sala de aula.
 
-Sistema financeiro desenvolvido para a disciplina de **Programação Orientada a Objetos II (POO II)**.
+O projeto possui as classes `Conta`, `Categoria`, `Lancamento`, `Fechamento`, `Conciliacao` e `Extrato`, além de testes automatizados utilizando o `pytest`.
 
-O projeto tem como objetivo aplicar, na prática, conceitos de Programação Orientada a Objetos aprendidos em sala de aula por meio da construção de um pequeno domínio financeiro, utilizando classes, objetos, relacionamentos, regras de negócio e testes automatizados.
+# Decisões de projeto
 
----
+# 1. No Fechamento, os Lancamentos são copiados ou referenciados?
 
-# 🎯 Objetivo do projeto
+Os `Lancamentos` são **referenciados**, e não copiados.
 
-O **POO Financeiro** foi desenvolvido para representar operações básicas de um sistema financeiro.
+O `Fechamento` em si recebe uma lista de lançamentos e mantém essa mesma referência. Essa decisão foi tomada porque não é necessário criar novos objetos para realizar os cálculos do período. Assim, o fechamento vai  apenas utilizar os lançamentos já existentes para calcular totais, créditos, débitos e saldo.
 
-O projeto permite:
+# 2. Conciliacao é uma classe própria ou um método de Fechamento?
 
-- Criar e controlar contas;
-- Criar categorias financeiras;
-- Registrar lançamentos de crédito e débito;
-- Validar regras de negócio;
-- Realizar fechamentos financeiros;
-- Calcular créditos, débitos e saldo;
-- Verificar se um fechamento está conciliado;
-- Gerar um extrato a partir de diferentes fechamentos;
-- Testar automaticamente os comportamentos do sistema.
+A `Conciliacao` foi criada como uma **classe própria**.
 
-O foco do trabalho não é criar uma aplicação financeira completa, mas sim utilizar um domínio sem complexidade, um dominio simples para demonstrar os conceitos estudados em Programação Orientada a Objetos.
+O `Fechamento` é responsável por organizar os lançamentos e realizar os cálculos financeiros, enquanto a `Conciliacao` fica responsável por verificar se esses valores estão ok e equilibrados.
 
----
+# 3. O que acontece quando não existem Lancamentos no período?
 
-# 🧩 Domínio do sistema
+Quando não existem lançamentos, o `Fechamento` continua sendo válido. Os cálculos retornam `0`, pois não há valores para somar.
 
-O domínio financeiro é composto pelas classes:
+Exemplo:
 
-- `Conta`
-- `Categoria`
-- `Lancamento`
-- `Fechamento`
-- `Conciliacao`
-- `Extrato`
+* Total = `0`
+* Créditos = `0`
+* Débitos = `0`
+* Saldo = `0`
 
-Cada classe possui uma responsabilidade específica dentro do sistema.
+Não é exatamente considerada uma situação de erro.
 
-### Visão geral
+# 4. E quando a conciliação não bate?
 
-Conta
- │
- └── Representa uma conta financeira
+Quando os créditos e débitos são diferentes, a conciliação retorna `False` através do método `esta_conciliado()`.
 
-Categoria
- │
- └── Classifica lançamentos
+Não é lançada uma exceção, pois uma divergência de valores não impede o funcionamento do sistema. Apenas indica que aquele fechamento não está conciliado.
 
-Lancamento
- │
- └── Representa uma movimentação financeira
+## Testes
 
-Fechamento
- │
- └── Consolida lançamentos de um período
-       │
-       └── Calcula créditos, débitos e saldo
+Foram criados testes automatizados com `pytest`, incluindo casos de sucesso e situações inválidas para verificar as regras de negócio das classes e fazer com que tudo de certo.
 
-Conciliacao
- │
- └── Verifica se um fechamento está conciliado
+Para executar:
 
-Extrato
- │
- └── Consolida informações de diferentes fechamentos
+```bash
+python3 -m pytes
+```
+
+Todos os testes desenvolvidos para o projeto estão passando.
+
 
  # Autora
 
